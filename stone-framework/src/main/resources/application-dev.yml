@@ -4,6 +4,6 @@ server:
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://119.45.56.241:3306/wl_mall?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/my_test?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true
     username: root
-    password: WUlei1234.
+    password: root

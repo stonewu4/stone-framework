@@ -1,14 +1,17 @@
 package com.stone.controller;
 
 
+import com.stone.aop.Log;
 import com.stone.component.enums.ReturnCodeEnum;
 import com.stone.component.exception.BusinessException;
 import com.stone.component.response.ResponseInfo;
+import com.stone.enums.LogTypeEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -30,6 +33,7 @@ public class TestController {
      * 测试接口
      * @return
      */
+    @Log(description = "测试接口", value = 2, type = 2)
     @ApiOperation(value = "测试接口", notes = "测试接口")
     @GetMapping("/getTest")
 //    @ApiImplicitParams({
@@ -40,12 +44,15 @@ public class TestController {
         return "测试正常";
     }
 
+    @Log(description = "出现异常的接口", value = 1)
     @GetMapping("/wrong")
-    public int error(){
-        int i = 9/0;
+    public int error(@RequestParam Integer a,
+                     @RequestParam Integer b){
+        int i = a/b;
         return i;
     }
 
+    @Log(description = "自定义异常的接口", value = 2, type = 2)
     @GetMapping("/ex")
     public int ex(){
         throw new BusinessException(ReturnCodeEnum.IMAGE_FORMAT_ERROR);

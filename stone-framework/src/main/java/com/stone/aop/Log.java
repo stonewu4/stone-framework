@@ -1,0 +1,35 @@
+package com.stone.aop;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * log annotation
+ * <p>
+ * use:在方法上打上 @Log("log的描述")
+ * 在控制台看到对应数据,后面改为入库操作
+ */
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Log {
+    /**
+     * 详情见 LogTypeEnum.java
+     */
+    int value() default 0;
+
+    /**
+     * 操作模块类型
+     *     1: "首页"
+     *     2: "系统管理"
+     *     7: "系统管理"
+     *     8: "运维管理"
+     */
+    int type() default 1;
+
+    /**
+     * 接口的描述
+     */
+    String description() default "未知方法";
+}
