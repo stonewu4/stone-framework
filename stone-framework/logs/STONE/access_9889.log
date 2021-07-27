@@ -1,0 +1,2 @@
+2021-07-27 09:55:54.630+0800 [STONE] [WARN ] [o.m.s.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.stone]' package. Please check your configuration.
+2021-07-27 09:55:54.846+0800 [STONE] [WARN ] [o.m.s.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.stone.mapper]' package. Please check your configuration.

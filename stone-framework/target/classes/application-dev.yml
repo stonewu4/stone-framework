@@ -1,0 +1,9 @@
+#开发环境配置
+server:
+  port: 9889
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://119.45.56.241:3306/wl_mall?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8&autoReconnect=true&useSSL=false&allowMultiQueries=true
+    username: root
+    password: WUlei1234.
