@@ -3,14 +3,14 @@ spring:
   profiles:
     active: dev
   application:
-      name: my-mall
+      name: stone
 #    swagger:
 #      enabled: true #开启swagger
 #      basePackage: com.mti #swagger扫描包路径
   main:
     allow-bean-definition-overriding: true
   datasource:
-    name: my-mall-datasource
+    name: stone-datasource
     driver-class-name: com.mysql.jdbc.Driver
       # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
