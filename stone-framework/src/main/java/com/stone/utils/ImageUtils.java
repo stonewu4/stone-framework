@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * @author can
  * 图片工具类
  */
 public class ImageUtils {

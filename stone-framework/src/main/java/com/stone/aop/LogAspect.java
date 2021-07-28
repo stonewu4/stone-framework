@@ -92,12 +92,12 @@ public class LogAspect implements Serializable {
         Log logAnnotation = method.getAnnotation(Log.class);
         if (logAnnotation != null) {
             // 注解上的描述
-            int operate = logAnnotation.value();
-            String operation = CoreUtils.getOperation(operate);
+            int operate = logAnnotation.value().getCode();
+            String operation = logAnnotation.value().getTypeName();
             sysLog.setOperation(operate);
             // 注解上的模块类型
-            int type = logAnnotation.type();
-            String module = CoreUtils.getModule(type);
+            int type = logAnnotation.type().getCode();
+            String module = logAnnotation.type().getTypeName();
             sysLog.setLogType(type);
             // 注解上的日志描述  TODO 用户这里先写死
             String desc = "USER[stone]" + "在 " + module + " 调用了 " + logAnnotation.description() + " 的方法";

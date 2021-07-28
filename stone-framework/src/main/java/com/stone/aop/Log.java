@@ -1,5 +1,8 @@
 package com.stone.aop;
 
+import com.stone.enums.LogTypeEnum;
+import com.stone.enums.ModuleTypeEnum;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -15,18 +18,16 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Log {
     /**
+     * 日志类型
      * 详情见 LogTypeEnum.java
      */
-    int value() default 0;
+    LogTypeEnum value() default LogTypeEnum.DEFAULT;
 
     /**
      * 操作模块类型
-     *     1: "首页"
-     *     2: "系统管理"
-     *     7: "系统管理"
-     *     8: "运维管理"
+     * 详情见 ModuleTypeEnum.java
      */
-    int type() default 1;
+    ModuleTypeEnum type() default ModuleTypeEnum.INDEX;
 
     /**
      * 接口的描述

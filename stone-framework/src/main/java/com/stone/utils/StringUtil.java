@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @author can
  *String工具类
  */
 public class StringUtil {

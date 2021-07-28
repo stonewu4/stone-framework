@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * @Author: stone
@@ -27,7 +28,12 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseInfo<String> exception(Exception e) {
         log.error("全局异常信息 Exception: {}", e.getMessage(), e);
-        return ResponseInfo.fail(ReturnCodeEnum.RC500.getCode(),e.getMessage());
+        if(e instanceof NoHandlerFoundException){
+            return ResponseInfo.fail(ReturnCodeEnum.RC404);
+        }else {
+            return ResponseInfo.fail(ReturnCodeEnum.RC500.getCode(),e.getMessage());
+        }
+
     }
 
     /**

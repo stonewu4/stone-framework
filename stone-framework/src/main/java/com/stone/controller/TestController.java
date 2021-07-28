@@ -6,6 +6,7 @@ import com.stone.component.enums.ReturnCodeEnum;
 import com.stone.component.exception.BusinessException;
 import com.stone.component.response.ResponseInfo;
 import com.stone.enums.LogTypeEnum;
+import com.stone.enums.ModuleTypeEnum;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class TestController {
      * 测试接口
      * @return
      */
-    @Log(description = "测试接口", value = 2, type = 2)
+    @Log(description = "测试接口", value = LogTypeEnum.SELECT, type = ModuleTypeEnum.INDEX)
     @ApiOperation(value = "测试接口", notes = "测试接口")
     @GetMapping("/getTest")
 //    @ApiImplicitParams({
@@ -44,7 +45,7 @@ public class TestController {
         return "测试正常";
     }
 
-    @Log(description = "出现异常的接口", value = 1)
+    @Log(description = "出现异常的接口", value = LogTypeEnum.EXPORT, type = ModuleTypeEnum.SYSTEM_MANAGE)
     @GetMapping("/wrong")
     public int error(@RequestParam Integer a,
                      @RequestParam Integer b){
@@ -52,7 +53,7 @@ public class TestController {
         return i;
     }
 
-    @Log(description = "自定义异常的接口", value = 2, type = 2)
+    @Log(description = "自定义异常的接口", value = LogTypeEnum.DELETE, type = ModuleTypeEnum.ROLE_MANAGE)
     @GetMapping("/ex")
     public int ex(){
         throw new BusinessException(ReturnCodeEnum.IMAGE_FORMAT_ERROR);

@@ -20,18 +20,18 @@ public enum LogTypeEnum {
     UPLOAD(9,"上传"),
     DEFAULT(0,"默认");
     private int code;
-    private String type;
+    private String typeName;
 
-    LogTypeEnum(int code, String type) {
+    LogTypeEnum(int code, String typeName) {
         this.code = code;
-        this.type = type;
+        this.typeName = typeName;
     }
 
     public int getCode() {
         return code;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeName() {
+        return typeName;
     }
 }
