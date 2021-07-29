@@ -1,9 +1,11 @@
 package com.stone.controller;
 
+import com.stone.aop.Log;
 import com.stone.component.enums.ReturnCodeEnum;
 import com.stone.component.exception.BusinessException;
 import com.stone.component.response.ResponseInfo;
 import com.stone.controller.vo.ImgPathVo;
+import com.stone.enums.LogTypeEnum;
 import com.stone.utils.FdfsClient;
 import com.stone.utils.ImageUtils;
 import io.swagger.annotations.Api;
@@ -32,6 +34,7 @@ public class UploadController {
 
     @PostMapping(value = "/image")
     @ApiOperation(value = "图片上传", notes = "图片上传")
+    @Log(description = "图片上传",value = LogTypeEnum.UPLOAD)
     public String uploadImgToFastdfs(@RequestParam("file") MultipartFile uploadImg) {
         Assert.notNull(uploadImg, "上传图片文件不能为空");
         if (!ImageUtils.isImgFile(uploadImg))
@@ -41,6 +44,7 @@ public class UploadController {
 
     @PostMapping(value = "/uploadImageAndCrtThumbImage")
     @ApiOperation(value = "图片上传并获取略缩图", notes = "图片上传并获取略缩图")
+    @Log(description = "图片上传并获取略缩图",value = LogTypeEnum.UPLOAD)
     public ImgPathVo uploadImageAndCrtThumbImage(@RequestParam("file") MultipartFile uploadImg) {
         Assert.notNull(uploadImg, "上传图片文件不能为空");
         if (!ImageUtils.isImgFile(uploadImg))
@@ -50,6 +54,7 @@ public class UploadController {
 
     @PostMapping(value = "/deleteFile")
     @ApiOperation(value = "删除文件", notes = "删除文件")
+    @Log(description = "删除文件",value = LogTypeEnum.DELETE)
     public String deleteFile(@RequestBody List<String> urls) {
         if(!CollectionUtils.isEmpty(urls)){
             throw new BusinessException(ReturnCodeEnum.INFO_INCOMPLETE);
@@ -62,6 +67,7 @@ public class UploadController {
 
     @PostMapping(value = "/imageList")
     @ApiOperation(value = "图片批量上传", notes = "图片批量上传")
+    @Log(description = "图片批量上传",value = LogTypeEnum.UPLOAD)
     public List<String> uploadImgListToFastdfs(@RequestParam("files") MultipartFile[] uploadImgList) {
         List<String> returnList = new ArrayList<>();
         for(MultipartFile file : uploadImgList){
@@ -75,6 +81,7 @@ public class UploadController {
 
     @PostMapping(value = "/file")
     @ApiOperation(value = "文件上传", notes = "文件上传")
+    @Log(description = "文件上传",value = LogTypeEnum.UPLOAD)
     public String uploadFilesToFastdfs(@RequestParam("file") MultipartFile file) {
         Assert.notNull(file, "上传文件不能为空");
         return fdfsClient.uploadFile(file);
